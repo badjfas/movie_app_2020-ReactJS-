@@ -1,4 +1,5 @@
 import React from 'react'; //Component를 사용시 항상 선언
+import PropTypes from 'prop-types'; //Component를 사용시 항상 선언
 
 
 const foods = [{
@@ -40,14 +41,20 @@ const lang=[{
   ,rating:3
   }];
 
-function Food({name , picture}){
+function Food({name , picture,rating}){
   return (<div>
     <h1>{name}</h1>
     <img src={picture} alt={name}/>
+    <h4>{rating}</h4>
     </div>
   )
 }
 
+Food.propTypes={
+  name : PropTypes.string.isRequired,
+  picture : PropTypes.string.isRequired,
+  rating:PropTypes.string.isRequired
+}
 function Language({name,picture}){
   return (<div>
     <h1>{name}</h1>
@@ -60,7 +67,7 @@ function App() {
   return (
     <div>
       {foods.map(dish =>(
-        <Food key={dish.id} name={dish.name} picture={dish.image}/>
+        <Food key={dish.id} name={dish.name} picture={dish.image} rating={dish.rating}/>
       ))}
             {lang.map(category=>(
         <Language key={category.ids} name={category.name} picture={category.image}/>
