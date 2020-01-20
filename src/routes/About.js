@@ -1,6 +1,7 @@
 import React from "react";
 
-function About(){
+function About(props){
+    console.log(props);
     return <span>this is About Component</span>
 }
 
